@@ -1,12 +1,7 @@
 <template>
   <div class="container">
-    <h2 class="title">Task#7_1: Элементы массива</h2>
-    <div class="array-items">
-      <p v-for="(item, index) in arr1" :key="index" class="item">{{ item }}</p>
-    </div>
-
-    <h2 class="title">Task#7_2: Сумма элементов массива</h2>
-    <p class="sum">Сумма: {{ sum }}</p>
+    <h1 class="title">Task#8: Сумма элементов объекта</h1>
+    <p class="sum">Сумма: {{ totalSum }}</p>
   </div>
 </template>
 
@@ -14,47 +9,35 @@
 export default {
   data() {
     return {
-      arr1: ['x', 'y', 'z'], // Массив для задания №1
-      arr2: [1, 2, 3], // Массив для задания №2
-    }
+      obj: { x: 1, y: 2, z: 3 }, // Объект с элементами
+    };
   },
   computed: {
-    sum() {
-      return this.arr2.reduce((acc, curr) => acc + curr, 0); // Вычисляем сумму элементов массива
-    }
-  }
-}
+    totalSum() {
+      // Вычисляем сумму значений объекта
+      return Object.values(this.obj).reduce((acc, curr) => acc + curr, 0);
+    },
+  },
+};
 </script>
 
 <style scoped>
 .container {
   text-align: center;
-  background-color:rgba(255, 73, 188, 0.59); 
+  background-color:rgb(248, 202, 236); /* Светлый фон для контраста */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .title {
-  color: #D5006D; 
+  color: #D5006D; /* Темно-розовый цвет заголовка */
   font-family: 'Arial', sans-serif;
   margin-bottom: 15px;
 }
 
-.array-items {
-  margin-bottom: 20px;
-}
-
-.item {
-  color: #D5006D;
-  font-size: 1.5em;
-  margin: 10px 0;
-}
-
 .sum {
   font-size: 1.5em;
-  color: #D5006D; 
+  color: #D5006D; /* Темно-розовый цвет суммы */
 }
 </style>
-
-
