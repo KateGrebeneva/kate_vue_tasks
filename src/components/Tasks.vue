@@ -1,20 +1,25 @@
 <template>
   <div class="container">
-    <h1 class="title">Квадрат числа</h1>
-    <div class="button-container">
-      <button @click="showSquare(2)" class="button">Квадрат 2</button>
-      <button @click="showSquare(3)" class="button">Квадрат 3</button>
-    </div>
+    <!-- Задание 1: Выводим значение свойства text в абзаце -->
+    <p class="text-display">{{ text }}</p>
+    
+    <!-- Задание 2: Кнопка для изменения текста -->
+    <button class="change-button" @click="change">Изменить текст</button>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      // Изначальное значение свойства text
+      text: 'xxx', 
+    };
+  },
   methods: {
-    // Метод, принимающий число и выводящий его квадрат
-    showSquare(num) {
-      const square = num * num;
-      alert("Квадрат числа " + num + " равен " + square);
+    // Задание 2: Метод для изменения текста на 'yyy'
+    change() {
+      this.text = 'yyy'; // Изменяем текст на 'yyy'
     },
   },
 };
@@ -23,38 +28,31 @@ export default {
 <style scoped>
 .container {
   text-align: center;
-  background-color:rgb(244, 187, 234); 
-  padding: 20px;
+  padding: 50px;
+  background-color:rgb(245, 150, 205); 
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.title {
-  color: #D5006D; 
-  font-family: 'Arial', sans-serif;
-  font-size: 24px;
+.text-display {
+  font-size: 2em;
+  color: #d5006d;
   margin-bottom: 20px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px; 
-}
-
-.button {
-  background-color: #D5006D; 
-  color: white;
+.change-button {
+  padding: 15px 25px;
   border: none;
-  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  font-size: 16px; 
+  background-color: #d5006d; 
+  color: white;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.2s; 
 }
 
-.button:hover {
-  background-color: #a4004e; 
+.change-button:hover {
+  background-color: #c51162; 
   transform: scale(1.05); 
 }
 </style>
