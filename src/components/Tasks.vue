@@ -1,26 +1,27 @@
 <template>
-  <div class="greeting">
-    Hey! My name is Catherine, hug you!
+  <div>
+    <div class="user-name">{{ name }}</div>
+    <div class="user-surname">{{ surn }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Tasks',
+  data() {
+    return {
+      name: 'Emma',
+      surn: 'Swan',
+    }
+  }
 }
 </script>
 
 <style scoped>
-.greeting {
+.user-name, .user-surname {
   color: #D5006D; /* Темно-розовый цвет */
   font-family: 'Arial', sans-serif; /* Шрифт */
-  font-size: 24px; /* Размер шрифта */
-  text-align: center; /* Выравнивание по центру */
-  padding: 20px; /* Отступы */
-  border: 2px solid #D5006D; /* Рамка */
-  border-radius: 10px; /* Скругление углов */
-  background-color: #F8BBD0; /* Светлый фон */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Тень */
+  font-size: 20px; /* Размер шрифта */
+  margin: 10px 0; /* Отступы */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Тень текста */
 }
 </style>
-
