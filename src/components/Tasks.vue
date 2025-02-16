@@ -1,10 +1,12 @@
 <template>
   <div class="container">
-    <h1 class="styled-text">Задание №1: Квадрат числа</h1>
-    <p class="result">{{ num * num }}</p>
+    <h2 class="title">Task#7_1: Элементы массива</h2>
+    <div class="array-items">
+      <p v-for="(item, index) in arr1" :key="index" class="item">{{ item }}</p>
+    </div>
 
-    <h1 class="styled-text">Задание №2: Сумма чисел</h1>
-    <p class="result">{{ num1 + num2 + num3 }}</p>
+    <h2 class="title">Task#7_2: Сумма элементов массива</h2>
+    <p class="sum">Сумма: {{ sum }}</p>
   </div>
 </template>
 
@@ -12,10 +14,13 @@
 export default {
   data() {
     return {
-      num: 5,
-      num1: 1,
-      num2: 2,
-      num3: 3,
+      arr1: ['x', 'y', 'z'], // Массив для задания №1
+      arr2: [1, 2, 3], // Массив для задания №2
+    }
+  },
+  computed: {
+    sum() {
+      return this.arr2.reduce((acc, curr) => acc + curr, 0); // Вычисляем сумму элементов массива
     }
   }
 }
@@ -23,31 +28,33 @@ export default {
 
 <style scoped>
 .container {
-  text-align: center; 
-  margin-top: 50px; 
+  text-align: center;
+  background-color:rgba(255, 73, 188, 0.59); 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.styled-text {
+.title {
   color: #D5006D; 
-  font-family: 'Arial', sans-serif; 
-  font-size: 28px; 
-  margin-bottom: 20px; 
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 15px;
 }
 
-.result {
-  color:rgb(158, 0, 71); 
-  background-color:rgba(242, 12, 131, 0.55); 
-  font-family: 'Arial', sans-serif; 
-  font-size: 24px; 
-  padding: 10px; 
-  border: 2px solid #D5006D; 
-  border-radius: 8px; 
-  display: inline-block; 
-  transition: background-color 0.3s ease; 
+.array-items {
+  margin-bottom: 20px;
 }
 
-.result:hover {
-  background-color: rgba(213, 0, 109, 0.8); 
+.item {
+  color: #D5006D;
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.sum {
+  font-size: 1.5em;
+  color: #D5006D; 
 }
 </style>
+
 
