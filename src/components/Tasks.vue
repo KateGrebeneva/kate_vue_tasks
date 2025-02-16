@@ -1,37 +1,22 @@
 <template>
   <div class="container">
-    <h1 class="title">Введите номер дня недели (0 - Воскресенье, 6 - Суббота)</h1>
-    <input type="number" v-model="dayNumber" min="0" max="6" class="input" />
-    <button @click="showDayName" class="button">Показать название дня</button>
-    <h2 v-if="dayName" class="result">Сегодня: {{ dayName }}</h2>
+    <h1 class="title">Квадрат числа</h1>
+    <div class="button-container">
+      <button @click="showSquare(2)" class="button">Квадрат 2</button>
+      <button @click="showSquare(3)" class="button">Квадрат 3</button>
+      <button @click="showSquare(4)" class="button">Квадрат 4</button>
+      <button @click="showSquare(5)" class="button">Квадрат 5</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      dayNumber: null,
-      dayName: '',
-    };
-  },
   methods: {
-    // Вспомогательный метод для получения названия дня недели
-    getDayName(dayNumber) {
-      const days = [
-        'Воскресенье',
-        'Понедельник',
-        'Вторник',
-        'Среда',
-        'Четверг',
-        'Пятница',
-        'Суббота',
-      ];
-      return days[dayNumber] || 'Некорректный номер';
-    },
-    // Основной метод для отображения названия дня
-    showDayName() {
-      this.dayName = this.getDayName(this.dayNumber);
+    // Метод, принимающий число и выводящий его квадрат
+    showSquare(num) {
+      const square = num * num;
+      alert("Квадрат числа " + num + " равен " + square);
     },
   },
 };
@@ -40,7 +25,7 @@ export default {
 <style scoped>
 .container {
   text-align: center;
-  background-color: #f8e1f4; 
+  background-color:rgb(245, 162, 231); 
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -53,15 +38,14 @@ export default {
   margin-bottom: 20px;
 }
 
-.input {
-  padding: 10px;
-  border: 2px solid #D5006D; 
-  border-radius: 5px;
-  margin-bottom: 20px;
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px; 
 }
 
 .button {
-  background-color: #D5006D; 
+  background-color:rgb(229, 72, 153); 
   color: white;
   border: none;
   padding: 10px 20px;
@@ -72,11 +56,6 @@ export default {
 
 .button:hover {
   background-color: #a4004e; 
-  transform: scale(1.05);
-}
-
-.result {
-  color: #D5006D; 
-  font-size: 20px;
+  transform: scale(1.05); 
 }
 </style>
