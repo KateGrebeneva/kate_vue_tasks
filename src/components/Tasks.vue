@@ -1,19 +1,18 @@
 <template>
   <div class="container">
     <h1 class="title">Текущая дата</h1>
-    <button class="date-button" @click="showDate">Показать текущую дату</button>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {};
+  mounted() {
+    this.showDate();
   },
   methods: {
     showDate() {
-      const currentDate = new Date().toLocaleString(); 
-      alert("Текущая дата и время: " + currentDate); 
+      const currentDate = new Date().toLocaleString();
+      alert("Текущая дата и время: " + currentDate);
     },
   },
 };
@@ -22,29 +21,14 @@ export default {
 <style scoped>
 .container {
   text-align: center;
-  background-color:rgba(255, 149, 228, 0.88); 
+  background-color:rgb(247, 203, 235); 
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .title {
-  color: #D5006D; 
+  color: #D5006D;
   font-family: 'Arial', sans-serif;
-  margin-bottom: 15px;
-}
-
-.date-button {
-  background-color: #D5006D;
-  color: white; 
-  border: none; 
-  padding: 10px 20px; 
-  border-radius: 5px; 
-  cursor: pointer; 
-  font-size: 1em; 
-}
-
-.date-button:hover {
-  background-color: #B0004C; 
 }
 </style>
