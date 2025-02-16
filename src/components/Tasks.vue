@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="title">Текущая дата</h1>
-    <button @click="showDate" class="date-button">Показать текущую дату</button>
+    <button @mouseover="showDate" class="date-button">Наведите на меня!</button>
   </div>
 </template>
 
@@ -19,14 +19,14 @@ export default {
 <style scoped>
 .container {
   text-align: center;
-  background-color:rgb(246, 180, 230); 
+  background-color:rgb(251, 157, 227); 
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .title {
-  color: #D5006D; 
+  color: #D5006D;
   font-family: 'Arial', sans-serif;
   margin-bottom: 15px;
 }
@@ -42,7 +42,6 @@ export default {
 }
 
 .date-button:hover {
-  background-color: #B0004C;
+  background-color: #B0004C; 
 }
 </style>
-
