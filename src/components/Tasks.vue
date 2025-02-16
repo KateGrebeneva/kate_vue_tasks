@@ -1,16 +1,24 @@
 <template>
   <div class="container">
-    <h1 class="title">Текущая дата</h1>
-    <button @mouseover="showDate" class="date-button">Наведите на меня!</button>
+    <h1 class="title">Сумма чисел</h1>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      num1: 1,
+      num2: 2,
+    };
+  },
+  mounted() {
+    this.showSum();
+  },
   methods: {
-    showDate() {
-      const currentDate = new Date().toLocaleString();
-      alert("Текущая дата и время: " + currentDate);
+    showSum() {
+      const sum = this.num1 + this.num2;
+      alert("Сумма чисел: " + sum);
     },
   },
 };
@@ -19,29 +27,20 @@ export default {
 <style scoped>
 .container {
   text-align: center;
-  background-color:rgb(251, 157, 227); 
+  background-color:rgb(255, 168, 233);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .title {
-  color: #D5006D;
+  color: #D5006D; 
   font-family: 'Arial', sans-serif;
-  margin-bottom: 15px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.date-button {
-  background-color: #D5006D; 
-  color: white; 
-  border: none; 
-  padding: 10px 20px; 
-  border-radius: 5px; 
-  cursor: pointer; 
-  font-size: 1em; 
-}
-
-.date-button:hover {
-  background-color: #B0004C; 
+body {
+  background-color:rgb(255, 184, 226); 
 }
 </style>
