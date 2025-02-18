@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <button @click="show" class="styled-button">Показать текст</button>
-    <button @click="hide" class="styled-button">Скрыть текст</button>
+    <button v-if="!visible" @click="show" class="styled-button">Показать текст</button>
+    <button v-if="visible" @click="hide" class="styled-button">Скрыть текст</button>
     <p v-if="visible" class="styled-text">Это текст, который можно скрывать и показывать.</p>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
 .styled-text {
   color: #d5006d; 
   font-size: 24px; 
-  font-weight: bold;
+  font-weight: bold; 
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); 
   transition: opacity 0.5s;
 }
@@ -41,7 +41,7 @@ export default {
 .styled-button {
   background-color: #d5006d; 
   color: white; 
-  border: none; 
+  border: none;
   border-radius: 8px; 
   padding: 12px 24px; 
   font-size: 18px; 
