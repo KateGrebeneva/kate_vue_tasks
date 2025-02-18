@@ -1,8 +1,11 @@
 <template>
   <div class="container">
-    <button @click="handleClick" :disabled="isClicked" class="click-button">
-      {{ isClicked ? 'Клик выполнен' : 'Нажми на меня' }}
+    <button @click="toggleVisibility" class="toggle-button">
+      {{ visible ? 'Скрыть текст' : 'Показать текст' }}
     </button>
+    
+    <p v-if="visible" class="text-visible">Первый абзац: текст виден!</p>
+    <p v-else class="text-hidden">Второй абзац: текст скрыт!</p>
   </div>
 </template>
 
@@ -10,15 +13,12 @@
 export default {
   data() {
     return {
-      isClicked: false // Флаг, отслеживающий, был ли клик
+      visible: true, // Начальное значение для видимости
     };
   },
   methods: {
-    handleClick() {
-      if (!this.isClicked) {
-        console.log('Первый клик по кнопке!');
-        this.isClicked = true; // Устанавливаем флаг в true после первого клика
-      }
+    toggleVisibility() {
+      this.visible = !this.visible; // Переключаем значение visible
     }
   }
 };
@@ -28,20 +28,31 @@ export default {
 .container {
   text-align: center;
   padding: 50px;
+  background-color:rgb(255, 207, 245); 
 }
 
-.click-button {
-  padding: 15px 25px;
+.toggle-button {
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: rgb(208, 47, 130);
+  background-color: rgb(208, 47, 130); 
   color: white;
   font-size: 1em;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.click-button:disabled {
-  background-color: rgba(208, 47, 130, 0.5);
-  cursor: not-allowed;
+.toggle-button:hover {
+  background-color: rgb(165, 38, 100); 
+}
+
+.text-visible {
+  color: rgb(208, 47, 130); 
+  font-size: 1.5em;
+}
+
+.text-hidden {
+  color: rgba(208, 47, 130, 0.5); 
+  font-size: 1.5em;
 }
 </style>
