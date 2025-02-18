@@ -1,14 +1,12 @@
 <template>
   <div class="container">
     <button @click="toggleVisibility" class="toggle-button">
-      {{ isVisible ? 'Скрыть' : 'Показать' }} абзацы
+      {{ isVisible ? 'Скрыть' : 'Показать' }} абзац
     </button>
     
-    <template v-if="isVisible">
-      <p class="paragraph">Ежик — это один из персонажей мультсериала "Смешарики", который отличается своей добротой и умом.</p>
-      <p class="paragraph">Он всегда готов прийти на помощь своим друзьям и решать возникающие проблемы.</p>
-      <p class="paragraph">Ежик любит природу и часто проводит время на свежем воздухе, исследуя окружающий мир.</p>
-    </template>
+    <p v-show="isVisible" class="paragraph">
+      «Мы тут все сумасшедшие». Чеширский кот, «Алиса в стране чудес».
+    </p>
   </div>
 </template>
 
@@ -16,7 +14,7 @@
 export default {
   data() {
     return {
-      isVisible: true, // Начальное состояние видимости абзацев
+      isVisible: false, // Начальное состояние видимости абзаца
     };
   },
   methods: {
@@ -45,25 +43,19 @@ export default {
   padding: 10px 20px;
   font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .toggle-button:hover {
   background-color: #a2004d; /* Более темный оттенок при наведении */
+  transform: scale(1.05); /* Увеличение кнопки при наведении */
 }
 
 .paragraph {
   color: #800024; /* Темно-розовый цвет текста */
   font-size: 16px;
-  margin: 10px 0;
+  margin-top: 20px;
   line-height: 1.5;
-}
-
-.paragraph:nth-child(even) {
-  font-style: italic; /* Курсив для четных абзацев */
-}
-
-.paragraph:nth-child(odd) {
-  font-weight: bold; /* Жирный шрифт для нечетных абзацев */
+  transition: opacity 0.5s ease; /* Плавный переход для отображения */
 }
 </style>
