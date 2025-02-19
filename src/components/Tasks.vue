@@ -1,68 +1,56 @@
 <template>
   <div class="container">
-    <h1 class="title">Однажды в сказке</h1>
-    <p class="description">Это история о том, как магия и реальность переплетаются в мире сказок.</p>
-    <div class="character">
-      <h2 class="character-title">Главные персонажи</h2>
-      <ul class="character-list">
-        <li>Эмма Свон</li>
-        <li>Румпельштильцхен</li>
-        <li>Регина Миллс</li>
-        <li>Киллиан Джемс</li>
-      </ul>
-    </div>
+    <h2 class="title">Фильм "Собачья жизнь"</h2>
+    <p :class="cssClasses">До безумства трогательный фильм, который рассказывает историю о верности и дружбе между человеком и собакой.</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'OnceUponATime',
+  name: 'DogLifeMovie',
+  data() {
+    return {
+      cssClasses: 'highlighted bold', 
+    };
+  },
 };
 </script>
 
 <style scoped>
 .container {
-  background-color:rgb(123, 0, 18); /* Бордовый фон */
+  background-color:rgb(242, 121, 183); 
   border-radius: 15px;
   padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   margin: 20px;
 }
 
 .title {
-  color: #f9d5d3; /* Светлый оттенок для заголовка */
+  color:rgb(182, 0, 94); 
   text-align: center;
-  font-size: 2em;
-  margin-bottom: 10px;
+  font-size: 2 em;
+  margin-bottom: 15px;
 }
 
-.description {
-  color: #f9d5d3; /* Светлый текст для описания */
+p {
   font-size: 1.2em;
   text-align: center;
-  margin-bottom: 20px;
 }
 
-.character {
-  border: 2px solid rgb(248, 171, 167); /* Светлая граница */
-  border-radius: 10px;
-  padding: 15px;
-   background-color:rgba(180, 35, 57, 0.84);
+.highlighted {
+  color:rgb(210, 14, 79); 
+  background-color: rgba(255, 255, 255, 0.2); 
+  padding: 10px;
+  border-radius: 5px;
+  transition: transform 0.3s; 
 }
 
-.character-title {
-  color:rgb(245, 141, 136); /* Светлый цвет для заголовка персонажей */
-  text-align: center;
+.bold {
+  font-weight: bold; 
 }
 
-.character-list {
-  list-style-type: none; /* Убираем маркеры списка */
-  padding: 0; /* Убираем отступы */
-}
-
-.character-list li {
-  color:rgb(255, 191, 188); /* Цвет для элементов списка */
-  font-size: 1.1em;
-  margin: 5px 0; /* Отступы между элементами списка */
+/* Эффект при наведении */
+.highlighted:hover {
+  transform: scale(1.05); 
 }
 </style>
