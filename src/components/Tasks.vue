@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <h2 class="title">Задание №1</h2>
+    <h2 class="title">Задание №2</h2>
     <ul class="list">
       <li v-for="(elem, index) in arr" :key="index" class="list-item">{{ elem }}</li>
     </ul>
-    <button class="button" @click="add">Добавить элемент</button>
+    <button class="button" @click="removeFirst">Удалить первый элемент</button>
   </div>
 </template>
 
@@ -12,12 +12,12 @@
 export default {
   data() {
     return {
-      arr: ['musa', 'flora', 'stella'],
+      arr: ['Cat', 'Dog', 'Rabbit'],
     };
   },
   methods: {
-    add() {
-      this.arr.push('aisha');
+    removeFirst() {
+      this.arr.shift();
     },
   },
 };
