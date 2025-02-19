@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <h2 class="title">Задание №3</h2>
+    <h2 class="title">Задание №4</h2>
     <ul class="list">
       <li v-for="(elem, index) in arr" :key="index" class="list-item">{{ elem }}</li>
     </ul>
-    <button class="button" @click="removeLast">Удалить последний элемент</button>
+    <button class="button" @click="removePenultimate">Удалить предпоследний элемент</button>
   </div>
 </template>
 
@@ -12,12 +12,14 @@
 export default {
   data() {
     return {
-      arr: ['Music', 'Dance', 'Poetry'],
+      arr: ['Love', 'Magic', 'Care'],
     };
   },
   methods: {
-    removeLast() {
-      this.arr.pop();
+    removePenultimate() {
+      if (this.arr.length > 1) {
+        this.arr.splice(this.arr.length - 2, 1);
+      }
     },
   },
 };
