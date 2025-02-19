@@ -2,22 +2,20 @@
   <div class="container">
     <h1 class="title">Перебор объектов</h1>
 
-    <!-- Задание 1 -->
     <div class="task">
-      <h2 class="task-title">Задание №1</h2>
+      <h2 class="task-title">Задание №3</h2>
       <ul class="item-list">
-        <li class="item" v-for="elem in obj" :key="elem">
-          {{ elem }}
+        <li class="item" v-for="(elem, key, index) in obj" :key="key">
+          {{ key }} - {{ elem }} - {{ index }}
         </li>
       </ul>
     </div>
 
-    <!-- Задание 2 -->
     <div class="task">
-      <h2 class="task-title">Задание №2</h2>
+      <h2 class="task-title">Задание №4</h2>
       <ul class="item-list">
-        <li class="item" v-for="(elem, key) in obj" :key="key">
-          {{ key }} - {{ elem }}
+        <li class="item" v-for="(elem, key, index) in obj" :key="key">
+          {{ key }} - {{ elem }} - {{ index + 1 }}
         </li>
       </ul>
     </div>
