@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <h2 class="title">Задание №5</h2>
+    <h2 class="title">Задание №6</h2>
     <ul class="list">
       <li v-for="(elem, index) in arr" :key="index" class="list-item">{{ elem }}</li>
     </ul>
-    <button class="button" @click="sortList">Отсортировать список</button>
+    <button class="button" @click="reverseList">Обратный порядок списка</button>
   </div>
 </template>
 
@@ -12,17 +12,16 @@
 export default {
   data() {
     return {
-      arr: ['c', 'b', 'a'],
+      arr: ['a', 'b', 'c'],
     };
   },
   methods: {
-    sortList() {
-      this.arr.sort();
+    reverseList() {
+      this.arr.reverse();
     },
   },
 };
 </script>
-
 
 <style scoped>
 .container {
