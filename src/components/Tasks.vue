@@ -1,54 +1,61 @@
 <template>
-  <div class="positive-numbers-container">
-    <h1 class="title">Положительные числа</h1>
-    <ul>
-      <template v-for="item in items">
-        <li v-if="item > 0" :key="item" class="number-item">
-          {{ item }}
-        </li>
-      </template>
+  <div class="product-list-container">
+    <h1 class="title">Список продуктов</h1>
+    <ul class="product-list">
+      <li v-for="product in products" :key="product.id" class="product-item">
+        {{ product.name }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PositiveNumbers',
+  name: 'ProductList',
   data() {
     return {
-      items: [1, -2, 3, -4, 5],
+      products: [
+        { id: 1, name: 'Regina' },
+        { id: 2, name: 'Emma' },
+        { id: 3, name: 'Belle' },
+      ],
     };
   },
 };
 </script>
 
 <style scoped>
-.positive-numbers-container {
-  background-color:rgb(249, 200, 228); /* Светло-розовый фон */
+.product-list-container {
+  background-color:rgb(251, 193, 227); 
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .title {
-  color: #d5006d; /* Темно-розовый заголовок */
+  color: #d5006d; 
   text-align: center;
-  font-family: 'Arial', sans-serif; /* Шрифт заголовка */
+  font-family: 'Arial', sans-serif; 
   margin-bottom: 20px;
 }
 
-.number-item {
-  color: #d5006d; /* Темно-розовая текст */
-  font-size: 18px; /* Размер шрифта для чисел */
-  margin: 5px 0; /* Отступы между элементами списка */
-  padding: 10px; /* Отступ внутри элемента списка */
-  border: 2px solid #d5006d; /* Темно-розовая рамка */
-  border-radius: 10px; /* Закругление углов рамки */
-  transition: background-color 0.3s, transform 0.2s; /* Анимация при наведении */
+.product-list {
+  list-style-type: none; 
+  padding: 0; 
 }
 
-.number-item:hover {
-  background-color: #f1c4d4; /* Светло-розовый фон при наведении */
-  transform: scale(1.05); /* Увеличение при наведении */
+.product-item {
+  color: #d5006d; 
+  font-size: 18px;
+  margin: 10px 0; 
+  padding: 10px; 
+  border: 2px solid #d5006d; 
+  border-radius: 10px;
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+.product-item:hover {
+  background-color:rgb(250, 194, 213); 
+  transform: scale(1.05);
 }
 </style>
