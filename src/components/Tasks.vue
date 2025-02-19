@@ -1,11 +1,26 @@
 <template>
   <div class="container">
-    <h2 class="title">Вывод ключей и элементов массива</h2>
-    <ul class="item-list">
-      <li v-for="(elem, key) in arr" :key="key" class="item">
-        №{{ key + 1 }}: {{ elem }}
-      </li>
-    </ul>
+    <h1 class="title">Перебор объектов</h1>
+
+    <!-- Задание 1 -->
+    <div class="task">
+      <h2 class="task-title">Задание №1</h2>
+      <ul class="item-list">
+        <li class="item" v-for="elem in obj" :key="elem">
+          {{ elem }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Задание 2 -->
+    <div class="task">
+      <h2 class="task-title">Задание №2</h2>
+      <ul class="item-list">
+        <li class="item" v-for="(elem, key) in obj" :key="key">
+          {{ key }} - {{ elem }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -13,7 +28,11 @@
 export default {
   data() {
     return {
-      arr: ['x', 'y', 'z'],
+      obj: {
+        user1: '100$',
+        user2: '200$',
+        user3: '300$',
+      },
     };
   },
 };
@@ -31,6 +50,15 @@ export default {
   color: #d5006d; /* Темно-розовый заголовок */
   text-align: center;
   margin-bottom: 20px;
+}
+
+.task {
+  margin-bottom: 30px;
+}
+
+.task-title {
+  color: #d5006d; /* Темно-розовый заголовок задания */
+  margin-bottom: 10px;
 }
 
 .item-list {
