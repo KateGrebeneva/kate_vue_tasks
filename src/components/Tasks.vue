@@ -2,21 +2,24 @@
   <div class="task-container">
     <!-- Задание 1 -->
     <div class="task">
-      <h2 class="task-title">Задание №1</h2>
-      <div v-for="elem in items" :key="elem" class="item-wrapper">
-        <p class="item">{{ elem }}</p>
-        <p class="divider">Winx</p>
-      </div>
+      <h2 class="task-title">Задание №1: Персонажи из Смешариков</h2>
+      <ul class="links-list">
+        <li v-for="href in hrefs" :key="href.href" class="link-item">
+          <a :href="href.href" class="link">{{ href.text }}</a>
+        </li>
+      </ul>
     </div>
 
+    <!-- Задание 2 -->
     <div class="task">
-      <h2 class="task-title">Задание №2</h2>
-      <ul class="item-list">
-        <template v-for="elem in items" :key="elem">
-          <li class="item">{{ elem }}</li>
-          <li class="divider">Bratz</li>
-        </template>
-      </ul>
+      <h2 class="task-title">Задание №2: Список цветов</h2>
+      <table class="products-table">
+        <tr v-for="product in products" :key="product.name">
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.quantity }}</td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
@@ -25,7 +28,16 @@
 export default {
   data() {
     return {
-      items: [1, 2, 3],
+      hrefs: [
+        { href: '1.html', text: 'Крош' },
+        { href: '2.html', text: 'Ёжик' },
+        { href: '3.html', text: 'Нюша' },
+      ],
+      products: [
+        { name: 'Роза', price: 100, quantity: 5 },
+        { name: 'Тюльпан', price: 200, quantity: 4 },
+        { name: 'Лилия', price: 300, quantity: 3 },
+      ],
     };
   },
 };
@@ -33,7 +45,7 @@ export default {
 
 <style scoped>
 .task-container {
-  background-color:rgb(245, 187, 206); 
+  background-color: #ffccdd; /* Светло-розовый фон */
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -44,31 +56,38 @@ export default {
 }
 
 .task-title {
-  color: #d5006d; 
+  color: #d5006d; /* Темно-розовый заголовок задания */
   margin-bottom: 10px;
-  font-family: 'Arial', sans-serif; 
-  text-shadow: 1px 1px #fff; 
+  font-family: 'Arial', sans-serif; /* Шрифт заголовка */
+  text-shadow: 1px 1px #fff; /* Тень для заголовка */
 }
 
-.item-wrapper {
-  background-color: #f8b2c4; 
+.links-list {
+  list-style-type: none; /* Убираем стандартные маркеры списка */
+  padding: 0; /* Убираем отступы */
+}
+
+.link-item {
+  margin-bottom: 10px; /* Отступ между элементами списка */
+}
+
+.link {
+  color: #d5006d; /* Темно-розовая ссылка */
+  text-decoration: none; /* Убираем подчеркивание */
+}
+
+.link:hover {
+  text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse; /* Убираем промежутки между ячейками */
+}
+
+.products-table td {
+  border: 1px solid #d5006d; /* Темно-розовая граница ячеек */
   padding: 10px;
-  border-radius: 5px;
-}
-
-.item {
-  color: #800024; 
-  font-weight: bold; 
-}
-
-.divider {
-  border-top: 1px solid #d5006d;
-  margin-top: 5px;
-  color:rgb(165, 0, 47);
-}
-
-.item-list {
-  list-style-type: none; 
-  padding: 0; 
+   color:rgb(186, 6, 99);
 }
 </style>
