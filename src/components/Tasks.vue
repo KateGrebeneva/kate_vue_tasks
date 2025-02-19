@@ -1,22 +1,21 @@
 <template>
-  <div class="container">
-    <h1 class="title">Перебор объектов</h1>
-
+  <div class="task-container">
+    <!-- Задание 1 -->
     <div class="task">
-      <h2 class="task-title">Задание №3</h2>
-      <ul class="item-list">
-        <li class="item" v-for="(elem, key, index) in obj" :key="key">
-          {{ key }} - {{ elem }} - {{ index }}
-        </li>
-      </ul>
+      <h2 class="task-title">Задание №1</h2>
+      <div v-for="elem in items" :key="elem" class="item-wrapper">
+        <p class="item">{{ elem }}</p>
+        <p class="divider">Winx</p>
+      </div>
     </div>
 
     <div class="task">
-      <h2 class="task-title">Задание №4</h2>
+      <h2 class="task-title">Задание №2</h2>
       <ul class="item-list">
-        <li class="item" v-for="(elem, key, index) in obj" :key="key">
-          {{ key }} - {{ elem }} - {{ index + 1 }}
-        </li>
+        <template v-for="elem in items" :key="elem">
+          <li class="item">{{ elem }}</li>
+          <li class="divider">Bratz</li>
+        </template>
       </ul>
     </div>
   </div>
@@ -26,28 +25,18 @@
 export default {
   data() {
     return {
-      obj: {
-        user1: '100$',
-        user2: '200$',
-        user3: '300$',
-      },
+      items: [1, 2, 3],
     };
   },
 };
 </script>
 
 <style scoped>
-.container {
-  background-color: #ffccdd; /* Светло-розовый фон */
+.task-container {
+  background-color:rgb(245, 187, 206); 
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.title {
-  color: #d5006d; /* Темно-розовый заголовок */
-  text-align: center;
-  margin-bottom: 20px;
 }
 
 .task {
@@ -55,26 +44,31 @@ export default {
 }
 
 .task-title {
-  color: #d5006d; /* Темно-розовый заголовок задания */
+  color: #d5006d; 
   margin-bottom: 10px;
+  font-family: 'Arial', sans-serif; 
+  text-shadow: 1px 1px #fff; 
 }
 
-.item-list {
-  list-style-type: none; /* Убираем стандартные маркеры списка */
-  padding: 0; /* Убираем отступы */
+.item-wrapper {
+  background-color: #f8b2c4; 
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .item {
-  background-color: #f8b2c4; /* Более светлый розовый для элементов списка */
-  color: #800024; /* Темно-розовый текст */
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  transition: transform 0.2s, background-color 0.3s; /* Плавные переходы */
+  color: #800024; 
+  font-weight: bold; 
 }
 
-.item:hover {
-  transform: scale(1.05); /* Увеличение элемента при наведении */
-  background-color: #ff99b5; /* Изменение фона при наведении */
+.divider {
+  border-top: 1px solid #d5006d;
+  margin-top: 5px;
+  color:rgb(165, 0, 47);
+}
+
+.item-list {
+  list-style-type: none; 
+  padding: 0; 
 }
 </style>
