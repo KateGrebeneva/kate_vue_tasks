@@ -1,61 +1,66 @@
 <template>
-  <div class="product-list-container">
-    <h1 class="title">Список продуктов</h1>
-    <ul class="product-list">
-      <li v-for="product in products" :key="product.id" class="product-item">
-        {{ product.name }}
-      </li>
+  <div class="container">
+    <h2 class="title">Задание №1</h2>
+    <ul class="list">
+      <li v-for="(elem, index) in arr" :key="index" class="list-item">{{ elem }}</li>
     </ul>
+    <button class="button" @click="add">Добавить элемент</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ProductList',
   data() {
     return {
-      products: [
-        { id: 1, name: 'Regina' },
-        { id: 2, name: 'Emma' },
-        { id: 3, name: 'Belle' },
-      ],
+      arr: ['musa', 'flora', 'stella'],
     };
+  },
+  methods: {
+    add() {
+      this.arr.push('aisha');
+    },
   },
 };
 </script>
 
 <style scoped>
-.product-list-container {
-  background-color:rgb(251, 193, 227); 
+.container {
+  background-color:rgb(251, 172, 218); 
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .title {
   color: #d5006d; 
   text-align: center;
-  font-family: 'Arial', sans-serif; 
-  margin-bottom: 20px;
 }
 
-.product-list {
+.list {
   list-style-type: none; 
   padding: 0; 
 }
 
-.product-item {
-  color: #d5006d; 
-  font-size: 18px;
-  margin: 10px 0; 
+.list-item {
+  color: #d5006d;
+  font-size: 18px; 
+  margin: 10px 0;
   padding: 10px; 
   border: 2px solid #d5006d; 
-  border-radius: 10px;
-  transition: background-color 0.3s, transform 0.2s; 
+  border-radius: 10px; 
 }
 
-.product-item:hover {
-  background-color:rgb(250, 194, 213); 
-  transform: scale(1.05);
+.button {
+  background-color: #d5006d; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #b0004c; 
 }
 </style>
