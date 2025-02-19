@@ -1,34 +1,44 @@
 <template>
   <div class="container">
-    <h2 class="title">Фильм "Собачья жизнь"</h2>
-    <p :class="cssClasses">До безумства трогательный фильм, который рассказывает историю о верности и дружбе между человеком и собакой.</p>
+    <h1 class="title">Статус задачи</h1>
+    <p :class="{ done: obj.done, selected: obj.selected }">Текущий статус задачи</p>
+    <button class="button" @click="toggleStatus">Переключить статус</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'DogLifeMovie',
+  name: 'TaskStatus',
   data() {
     return {
-      cssClasses: 'highlighted bold', 
+      obj: {
+        done: true,      // Класс будет применен
+        selected: false, // Класс не будет применен
+      },
     };
+  },
+  methods: {
+    toggleStatus() {
+      // Переключаем значение done для демонстрации
+      this.obj.done = !this.obj.done;
+    },
   },
 };
 </script>
 
 <style scoped>
 .container {
-  background-color:rgb(242, 121, 183); 
+  background-color:rgb(246, 164, 197); /* Нежно-розовый фон */
   border-radius: 15px;
   padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   margin: 20px;
 }
 
 .title {
-  color:rgb(182, 0, 94); 
+  color: #d5006d; /* Темно-розовый цвет для заголовка */
   text-align: center;
-  font-size: 2 em;
+  font-size: 2.5em;
   margin-bottom: 15px;
 }
 
@@ -37,20 +47,30 @@ p {
   text-align: center;
 }
 
-.highlighted {
-  color:rgb(210, 14, 79); 
-  background-color: rgba(255, 255, 255, 0.2); 
-  padding: 10px;
-  border-radius: 5px;
-  transition: transform 0.3s; 
+/* Классы для применения */
+.done {
+  color: #4caf50; /* Зеленый цвет для завершенной задачи */
+  font-weight: bold; /* Жирное начертание текста */
 }
 
-.bold {
-  font-weight: bold; 
+.selected {
+  text-decoration: underline; /* Подчеркивание для выбранной задачи */
+  color: #ff4081; /* Яркий розовый цвет */
 }
 
-/* Эффект при наведении */
-.highlighted:hover {
-  transform: scale(1.05); 
+.button {
+  background-color: #d5006d; /* Темно-розовая кнопка */
+  color: white;
+  border: none;
+  border-radius: 25px; /* Плавные линии */
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; /* Плавный переход */
+}
+
+.button:hover {
+  background-color: #a0004c; /* Более темный оттенок при наведении */
+  transform: scale(1.05); /* Увеличение кнопки при наведении */
 }
 </style>
