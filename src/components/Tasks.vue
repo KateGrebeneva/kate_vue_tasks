@@ -1,26 +1,35 @@
 <template>
   <div class="container">
-    <h1 class="title">Статус задачи</h1>
-    <p :class="{ done: obj.done, selected: obj.selected }">Текущий статус задачи</p>
-    <button class="button" @click="toggleStatus">Переключить статус</button>
+    <h1 class="title">Управление видимостью текста</h1>
+    <p :class="obj">{{ message }}</p>
+    <div class="button-group">
+      <button class="button" @click="showElement">Показать</button>
+      <button class="button" @click="hideElement">Скрыть</button>
+      <button class="button" @click="toggleElement">Тоггл</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TaskStatus',
+  name: 'VisibilityToggle',
   data() {
     return {
+      message: 'Ариэль – жизнерадостная обитательница морских глубин.',
       obj: {
-        done: true,      // Класс будет применен
-        selected: false, // Класс не будет применен
+        hidden: true,
       },
     };
   },
   methods: {
-    toggleStatus() {
-      // Переключаем значение done для демонстрации
-      this.obj.done = !this.obj.done;
+    showElement() {
+      this.obj.hidden = false;
+    },
+    hideElement() {
+      this.obj.hidden = true;
+    },
+    toggleElement() {
+      this.obj.hidden = !this.obj.hidden;
     },
   },
 };
@@ -28,7 +37,7 @@ export default {
 
 <style scoped>
 .container {
-  background-color:rgb(246, 164, 197); /* Нежно-розовый фон */
+  background-color:rgb(255, 187, 210); /* Нежно-розовый фон */
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -43,19 +52,20 @@ export default {
 }
 
 p {
-  font-size: 1.2em;
+  font-size: 1.5em;
   text-align: center;
+  color: #d5006d;
 }
 
-/* Классы для применения */
-.done {
-  color: #4caf50; /* Зеленый цвет для завершенной задачи */
-  font-weight: bold; /* Жирное начертание текста */
+/* Класс для скрытия текста */
+.hidden {
+  display: none; /* Скрывает элемент */
 }
 
-.selected {
-  text-decoration: underline; /* Подчеркивание для выбранной задачи */
-  color: #ff4081; /* Яркий розовый цвет */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Промежуток между кнопками */
 }
 
 .button {
