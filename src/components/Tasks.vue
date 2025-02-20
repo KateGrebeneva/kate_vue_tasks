@@ -1,8 +1,8 @@
 <template>
-  <div class="task-2">
-    <h2>Задание 2</h2>
-    <input v-model="message" placeholder="Введите текст">
-    <p>{{ message.toUpperCase() }}</p>
+  <div class="task-3">
+    <h2>Задание 3</h2>
+    <input v-model.number="number" placeholder="Введите число">
+    <p>Квадрат числа: {{ number * number }}</p>
   </div>
 </template>
 
@@ -10,14 +10,14 @@
 export default {
   data() {
     return {
-      message: 'hello',
+      number: 0,
     };
   },
 };
 </script>
 
 <style scoped>
-.task-2 {
+.task-3 {
   background-color:rgb(255, 155, 205);
   padding: 20px;
   border-radius: 10px;
