@@ -1,9 +1,10 @@
 <template>
-  <div class="task-1">
-    <h2>Задание 1</h2>
-    <input v-model.number="num" placeholder="Введите число" />
-    <button @click="calc">Получить квадратный корень</button>
-    <p>Квадратный корень: {{ res }}</p>
+  <div class="task-2">
+    <h2>Задание 2</h2>
+    <input v-model.number="num1" placeholder="Введите первое число" />
+    <input v-model.number="num2" placeholder="Введите второе число" />
+    <button @click="calcSum">Получить сумму</button>
+    <p>Сумма: {{ sum }}</p>
   </div>
 </template>
 
@@ -11,20 +12,21 @@
 export default {
   data() {
     return {
-      num: 0,
-      res: 0,
+      num1: 0,
+      num2: 0,
+      sum: 0,
     };
   },
   methods: {
-    calc() {
-      this.res = Math.sqrt(this.num);
+    calcSum() {
+      this.sum = this.num1 + this.num2;
     },
   },
 };
 </script>
 
 <style scoped>
-.task-1 {
+.task-2 {
   background-color:rgb(254, 190, 229);
   padding: 20px;
   border-radius: 10px;
@@ -39,10 +41,11 @@ input {
 }
 button {
   padding: 10px;
-  background-color:rgb(255, 122, 188);
+  background-color:rgb(248, 0, 124);
   border-color:rgb(135, 0, 67);
   border-radius: 5px;
   cursor: pointer;
+  color:rgb(255, 202, 229);
 }
 button:hover {
   background-color: #ff66b2;
