@@ -1,8 +1,8 @@
 <template>
-  <div class="task-1">
-    <h2>Задание 1</h2>
+  <div class="task-2">
+    <h2>Задание 2</h2>
     <input v-model="message" placeholder="Введите текст">
-    <p>{{ message }}</p>
+    <p>{{ message.toUpperCase() }}</p>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style scoped>
-.task-1 {
+.task-2 {
   background-color:rgb(255, 155, 205);
   padding: 20px;
   border-radius: 10px;
