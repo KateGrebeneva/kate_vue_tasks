@@ -1,10 +1,11 @@
 <template>
-  <div class="task-2">
-    <h2>Задание 2</h2>
-    <input v-model.number="num1" placeholder="Введите первое число" />
-    <input v-model.number="num2" placeholder="Введите второе число" />
-    <button @click="calcSum">Получить сумму</button>
-    <p>Сумма: {{ sum }}</p>
+  <div class="task-3">
+    <h2>Задание 3</h2>
+    <input v-model="text1" placeholder="Введите текст в первый инпут" />
+    <input v-model="text2" placeholder="Введите текст во второй инпут" />
+    <button @click="swapText">Обменять текст</button>
+    <p>Текст из первого инпута: {{ text1 }}</p>
+    <p>Текст из второго инпута: {{ text2 }}</p>
   </div>
 </template>
 
@@ -12,21 +13,22 @@
 export default {
   data() {
     return {
-      num1: 0,
-      num2: 0,
-      sum: 0,
+      text1: '',
+      text2: '',
     };
   },
   methods: {
-    calcSum() {
-      this.sum = this.num1 + this.num2;
+    swapText() {
+      const temp = this.text1;
+      this.text1 = this.text2;
+      this.text2 = temp;
     },
   },
 };
 </script>
 
 <style scoped>
-.task-2 {
+.task-3 {
   background-color:rgb(254, 190, 229);
   padding: 20px;
   border-radius: 10px;
