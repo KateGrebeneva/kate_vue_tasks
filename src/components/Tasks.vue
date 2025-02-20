@@ -1,11 +1,11 @@
 <template>
-  <div class="task-3">
-    <h2>Задание 3</h2>
-    <input v-model="text1" placeholder="Введите текст в первый инпут" />
-    <input v-model="text2" placeholder="Введите текст во второй инпут" />
-    <button @click="swapText">Обменять текст</button>
-    <p>Текст из первого инпута: {{ text1 }}</p>
-    <p>Текст из второго инпута: {{ text2 }}</p>
+  <div class="task-4">
+    <h2>Задание 4</h2>
+    <input v-model="fullName" placeholder="Введите ФИО через пробел" />
+    <button @click="splitName">Разделить ФИО</button>
+    <p>Фамилия: {{ lastName }}</p>
+    <p>Имя: {{ firstName }}</p>
+    <p>Отчество: {{ middleName }}</p>
   </div>
 </template>
 
@@ -13,22 +13,25 @@
 export default {
   data() {
     return {
-      text1: '',
-      text2: '',
+      fullName: '',
+      lastName: '',
+      firstName: '',
+      middleName: '',
     };
   },
   methods: {
-    swapText() {
-      const temp = this.text1;
-      this.text1 = this.text2;
-      this.text2 = temp;
+    splitName() {
+      const names = this.fullName.split(' ');
+      this.lastName = names[0] || '';
+      this.firstName = names[1] || '';
+      this.middleName = names[2] || '';
     },
   },
 };
 </script>
 
 <style scoped>
-.task-3 {
+.task-4 {
   background-color:rgb(254, 190, 229);
   padding: 20px;
   border-radius: 10px;
