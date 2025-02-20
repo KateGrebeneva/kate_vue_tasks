@@ -1,11 +1,9 @@
 <template>
-  <div class="task-2">
-    <h2>Задание 2</h2>
-    <textarea v-model="text" placeholder="Введите текст..." ></textarea>
-    <button @click="getWords">Получить слова</button>
-     <ul>
-      <li v-for="(word, index) in words" :key="index">{{ word }}</li>
-    </ul>
+  <div class="checkbox-container">
+    <input type="checkbox" v-model="checked" id="checkbox">
+    <label for="checkbox">Отобразить абзац</label>
+    <p v-if="checked" class="visible-paragraph">Вы отметили чекбокс! Да!</p>
+    <p v-else class="hidden-paragraph">Чекбокс не отмечен. Нет.</p>
   </div>
 </template>
 
@@ -13,62 +11,42 @@
 export default {
   data() {
     return {
-      text: '',        // для привязки текста
-      words: [],       // массив для хранения слов
+      checked: false, // Начальное состояние чекбокса
     };
-  },
-  methods: {
-    getWords() {
-      // Разбиваем текст на массив слов
-      this.words = this.text.split(/\s+/).filter(Boolean);
-    },
   },
 };
 </script>
 
 <style scoped>
-.task-2 {
-  background-color:rgb(255, 162, 197); /* Нежно-розовый фон */
+.checkbox-container {
+  background-color:rgb(255, 143, 189); /* Нежно-розовый фон */
   padding: 20px;
   border-radius: 10px;
-  border: 2px solid rgb(255, 76, 166); /* Ярко-розовая граница */
+  border: 2px solid rgb(255, 70, 163); /* Ярко-розовая граница */
   color: #333;
   max-width: 400px;
   margin: 20px auto;
-  color:rgb(202, 0, 101);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
 }
-textarea {
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 2px solidrgb(253, 90, 171); /* Ярко-розовая граница */
-  color:rgb(202, 0, 101);
+
+input[type="checkbox"] {
+  cursor: pointer; /* Указатель при наведении */
 }
-textarea::placeholder {
-  color: #ff1493; /* Цвет плейсхолдера */
+
+label {
+  margin-left: 10px; /* Отступ между чекбоксом и текстом */
+  font-size: 18px; /* Размер шрифта для текста */
 }
-button {
-  padding: 10px;
-  background-color: #ff69b4; /* Ярко-розовая кнопка */
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
+
+.visible-paragraph {
+  font-size: 18px;
+  margin-top: 10px;
+  color:rgb(26, 160, 26); /* Зеленый цвет для видимого абзаца */
 }
-button:hover {
-  background-color: #ff1493; /* Цвет кнопки при наведении */
-}
-ul {
-  list-style-type: none; /* Убираем маркеры списка */
-  padding-left: 0; /* Убираем отступ слева */
-}
-li {
-  background-color: #fff; /* Белый фон для элементов списка */
-  margin-top: 5px;
-  padding: 5px;
-  border-radius: 5px;
+
+.hidden-paragraph {
+  font-size: 18px;
+  margin-top: 10px;
+  color:rgb(125, 0, 0); /* Бордовый цвет для скрытого абзаца */
 }
 </style>
-
-
