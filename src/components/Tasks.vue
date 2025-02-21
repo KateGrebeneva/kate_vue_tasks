@@ -1,36 +1,15 @@
 <template>
   <div class="container">
-    <!-- Задание №1 -->
-    <h2>Задание №1: Выбор родного языка</h2>
-    <div class="radio-group">
-      <label>
-        <input type="radio" v-model="choice" value="Русский"> Русский
-      </label>
-      <label>
-        <input type="radio" v-model="choice" value="Английский"> Английский
-      </label>
-      <label>
-        <input type="radio" v-model="choice" value="Испанский"> Испанский
-      </label>
-    </div>
-    <p>Вы выбрали: {{ choice }}</p>
-
-    <!-- Задание №2 -->
-    <h2>Задание №2: Фраза на выбранном языке</h2>
-    <div class="radio-group">
-      <label>
-        <input type="radio" v-model="language" value="Русский"> Русский
-      </label>
-      <label>
-        <input type="radio" v-model="language" value="Английский"> Английский
-      </label>
-      <label>
-        <input type="radio" v-model="language" value="Испанский"> Испанский
-      </label>
-    </div>
-    <p v-if="language === 'Русский'">Привет! Как дела?</p>
-    <p v-if="language === 'Английский'">Hello! How are you?</p>
-    <p v-if="language === 'Испанский'">¡Hola! ¿Cómo estás?</p>
+    <h2>Вопрос: В каком городе вы живете?</h2>
+    <select v-model="selected" class="city-select">
+      <option value="Симферополь">Симферополь</option>
+      <option value="Ялта">Ялта</option>
+      <option value="Керчь">Керчь</option>
+      <option value="Алушта">Алушта</option>
+      <option value="Севастополь">Севастополь</option>
+    </select>
+    
+    <p class="result">Вы живете в городе: <strong>{{ selected }}</strong></p>
   </div>
 </template>
 
@@ -38,8 +17,7 @@
 export default {
   data() {
     return {
-      choice: '',
-      language: ''
+      selected: 'Симферополь' // значение по умолчанию
     }
   }
 }
@@ -47,28 +25,33 @@ export default {
 
 <style scoped>
 .container {
-  background-color:rgb(255, 131, 177);
+  background-color:rgb(255, 153, 185);
   padding: 20px;
   border-radius: 10px;
-  border: 2px solid rgb(255, 43, 135);
+  border: 2px solid rgb(227, 25, 126);
+  max-width: 400px;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-  color:rgb(216, 21, 119);
+  color:rgb(247, 37, 142);
+  text-align: center;
 }
 
-.radio-group {
-  margin-bottom: 20px;
+.city-select {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 5px;
+  border: 1px solidrgb(219, 12, 115);
+  background-color: #fff;
+  font-size: 16px;
 }
 
-label {
-  display: block;
-  margin: 5px 0;
-  font-weight: bold;
-}
-
-p {
-  color:rgb(216, 21, 119);
+.result {
+  color:rgb(219, 20, 119);
   font-size: 18px;
+  text-align: center;
 }
 </style>
