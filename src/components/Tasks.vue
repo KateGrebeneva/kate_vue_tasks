@@ -1,9 +1,25 @@
 <template>
-  <div class="checkbox-container">
-    <input type="checkbox" v-model="checked" id="checkbox">
-    <label for="checkbox">Отобразить абзац</label>
-    <p v-if="checked" class="visible-paragraph">Вы отметили чекбокс! Да!</p>
-    <p v-else class="hidden-paragraph">Чекбокс не отмечен. Нет.</p>
+  <div class="container">
+    <h2>Задание №1: Выбор языков</h2>
+    <div class="checkbox-group">
+      <label>
+        <input type="checkbox" v-model="languages" value="JavaScript"> JavaScript
+      </label>
+      <label>
+        <input type="checkbox" v-model="languages" value="Python"> Python
+      </label>
+      <label>
+        <input type="checkbox" v-model="languages" value="Java"> Java
+      </label>
+      <label>
+        <input type="checkbox" v-model="languages" value="C++"> C++
+      </label>
+    </div>
+
+    <h2>Задание №2: Список языков</h2>
+    <ul>
+      <li v-for="(language, index) in languages" :key="index">{{ language }}</li>
+    </ul>
   </div>
 </template>
 
@@ -11,42 +27,40 @@
 export default {
   data() {
     return {
-      checked: false, // Начальное состояние чекбокса
-    };
-  },
-};
+      languages: [],
+    }
+  }
+}
 </script>
 
 <style scoped>
-.checkbox-container {
-  background-color:rgb(255, 143, 189); /* Нежно-розовый фон */
+.container {
+  background-color:rgb(255, 134, 176);
   padding: 20px;
   border-radius: 10px;
-  border: 2px solid rgb(255, 70, 163); /* Ярко-розовая граница */
-  color: #333;
-  max-width: 400px;
-  margin: 20px auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+  border: 2px solid rgb(209, 23, 88);
 }
 
-input[type="checkbox"] {
-  cursor: pointer; /* Указатель при наведении */
+h2 {
+  color:rgb(234, 27, 131);
+}
+
+.checkbox-group {
+  margin-bottom: 20px;
 }
 
 label {
-  margin-left: 10px; /* Отступ между чекбоксом и текстом */
-  font-size: 18px; /* Размер шрифта для текста */
+  display: block;
+  margin: 5px 0;
+  font-weight: bold;
 }
 
-.visible-paragraph {
-  font-size: 18px;
-  margin-top: 10px;
-  color:rgb(26, 160, 26); /* Зеленый цвет для видимого абзаца */
+ul {
+  list-style-type: square;
+  padding-left: 20px;
 }
 
-.hidden-paragraph {
-  font-size: 18px;
-  margin-top: 10px;
-  color:rgb(125, 0, 0); /* Бордовый цвет для скрытого абзаца */
+li {
+  color:rgb(232, 24, 128);
 }
 </style>
