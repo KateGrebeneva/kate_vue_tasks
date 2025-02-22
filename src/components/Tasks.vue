@@ -1,104 +1,86 @@
 <template>
   <div class="container">
-    <!-- Задание 1: Селект для выбора дня недели -->
-    <h2>Task#50 №1: Выберите день недели</h2>
-    <select v-model="selectedDay" class="custom-select">
-      <option v-for="day in days" :key="day">{{ day }}</option>
-    </select>
-    <p class="result">Выбранный день: <strong>{{ selectedDay }}</strong></p>
+    <h2>Блокировка элементов в Vue</h2>
 
-    <!-- Задание 2: Селекты для выбора дня, месяца и года -->
-    <h2>Task#50 №2: Выберите дату</h2>
-    <div class="date-selectors">
-      <select v-model="selectedDate" class="custom-select">
-        <option v-for="day in days" :key="day">{{ day }}</option>
-      </select>
-      <select v-model="selectedMonth" class="custom-select">
-        <option v-for="month in months" :key="month">{{ month }}</option>
-      </select>
-      <select v-model="selectedYear" class="custom-select">
-        <option v-for="year in years" :key="year">{{ year }}</option>
-      </select>
+    <div class="task" id="task-1">
+      <h3>Задание №1</h3>
+      <input type="text" v-bind:disabled="isInputDisabled" placeholder="Введите текст" />
+      <button @click="toggleInput">Toggle Input</button>
     </div>
-    <p class="result">Выбрано: {{ selectedDate }} {{ selectedMonth }} {{ selectedYear }}</p>
 
-    <!-- Задание 3: Установка текущей даты по умолчанию -->
-    <h2>Task#50 №3: Выберите текущую дату</h2>
-    <div class="date-selectors">
-      <select v-model="selectedDate" class="custom-select">
-        <option v-for="day in days" :key="day">{{ day }}</option>
-      </select>
-      <select v-model="selectedMonth" class="custom-select">
-        <option v-for="month in months" :key="month">{{ month }}</option>
-      </select>
-      <select v-model="selectedYear" class="custom-select">
-        <option v-for="year in years" :key="year">{{ year }}</option>
-      </select>
+    <div class="task" id="task-2">
+      <h3>Задание №2</h3>
+      <input type="checkbox" v-model="isCheckboxChecked" /> Разрешить ввод
+      <input type="text" v-bind:disabled="!isCheckboxChecked" placeholder="Введите текст" />
     </div>
-    <p class="result">Выбрано: {{ selectedDate }} {{ selectedMonth }} {{ selectedYear }}</p>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    const currentDate = new Date();
-    const currentDay = currentDate.getDate();
-    const currentMonth = currentDate.getMonth();
-    const currentYear = currentDate.getFullYear();
-
     return {
-      // Задание 1
-      selectedDay: 'Понедельник',
-      days: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
-
-      // Задание 2
-      selectedDate: currentDay,
-      selectedMonth: currentMonth + 1, // месяцы с 0 до 11
-      selectedYear: currentYear,
-      months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-      
-      // Генерация годов (например, от 1900 до текущего года)
-      years: Array.from({ length: currentYear - 1899 }, (_, i) => currentYear - i)
+      isInputDisabled: true,
+      isCheckboxChecked: false,
     };
-  }
-}
+  },
+  methods: {
+    toggleInput() {
+      this.isInputDisabled = !this.isInputDisabled;
+    },
+  },
+};
 </script>
 
 <style scoped>
 .container {
-  background-color:rgb(255, 158, 205);
-  padding: 20px;
+  background-color:rgb(253, 191, 221);
+  border: 2px solidrgb(255, 101, 178);
   border-radius: 10px;
-  border: 2px solid rgb(239, 63, 151);
-  max-width: 600px;
+  padding: 20px;
+  max-width: 400px;
   margin: auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.task {
+  background-color:rgb(255, 222, 233);
+  border: 1px solid #ff66b2;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
 }
 
 h2 {
-  color:rgb(214, 8, 111);
   text-align: center;
+  color:rgb(214, 0, 107);
 }
 
-.custom-select {
-  width: calc(33% - 10px);
-  padding: 10px;
-  margin: 15px 5px;
+h3 {
+  color: #cc0066;
+}
+
+button {
+  background-color:rgb(249, 82, 166);
+  color: white;
+  border: none;
   border-radius: 5px;
-  border: 1px solid rgb(209, 8, 109);
-  background-color: #fff;
-  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
 }
 
-.date-selectors {
-  display: flex;
-  justify-content: space-between;
+button:hover {
+  background-color: #ff3399;
 }
 
-.result {
-  color:rgb(211, 12, 112);
-  font-size: 18px;
-  text-align: center;
+input[type="text"] {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solidrgb(207, 29, 118);
+  border-radius: 5px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
 }
 </style>
