@@ -1,18 +1,21 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue'
 import Tasks from './components/Tasks.vue'
-import Employee from './components/Employee.vue'
 
-const func = (name, salary) => {
-  console.log('Name: ' + name,'Salary: ' +  salary);
+const message = ref('');
+
+const handleShow = (param1, param2) => {
+  message.value = param1 + " " + param2; // Сохраняем сообщение из события
 }
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-    <Employee @send-info="func" />
+    <Tasks @show="handleShow" />
+    <div v-if="message" class="message-box">{{ message }}</div>
   </header>
 
   <main>
@@ -30,10 +33,20 @@ header {
   margin: 0 auto 2rem;
 }
 
+
+.message-box {
+  margin-top: 1rem; /* Отступ сверху */
+  padding: 10px; /* Внутренний отступ */
+  border: 2px solid rgb(250, 62, 156); /* Розовая рамка */
+  background-color: rgba(250, 62, 156, 0.1); /* Светлый розовый фон */
+  color: rgb(250, 62, 156); /* Розовый цвет текста */
+  border-radius: 8px; /* Скругленные углы */
+}
+
 @media (min-width: 1024px) {
   header {
     display: flex;
-    place-items: center;
+    align-items: center; 
     padding-right: calc(var(--section-gap) / 2);
   }
 
@@ -43,7 +56,7 @@ header {
 
   header .wrapper {
     display: flex;
-    place-items: flex-start;
+    align-items: flex-start; 
     flex-wrap: wrap;
   }
 }
