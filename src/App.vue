@@ -6,9 +6,9 @@ import Employee from './components/Employee.vue'
 import { ref } from 'vue'
 
 // Определяем реактивные переменные
-const name = ref('John')
-const salary = ref(50000)
-const age = ref(30)
+const name = ref('Emma')
+const salary = ref(55000)
+const age = ref(28)
 </script>
 
 <template>
