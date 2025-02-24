@@ -1,20 +1,40 @@
 <template>
   <div class="employee-card">
-    <span class="employee-name">{{ name }} {{ surn }}</span>
-    <button class="remove-button" @click="$emit('remove', id)">
-      Удалить
-    </button>
+    <template v-if="!isEdit">
+      <span class="employee-name">{{ name }} {{ surn }}</span>
+      <button class="edit-button" @click="edit">Редактировать</button>
+    </template>
+    <template v-else>
+      <input v-model="newName" class="input-field" placeholder="Имя" />
+      <input v-model="newSurn" class="input-field" placeholder="Фамилия" />
+      <button class="save-button" @click="save">Сохранить</button>
+    </template>
   </div>
 </template>
 
 <script setup>
-defineProps({
+import { ref } from 'vue';
+
+const props = defineProps({
   id: Number,
   name: String,
   surn: String,
 });
 
-defineEmits(['remove']);
+const emit = defineEmits(['change']);
+
+const isEdit = ref(false);
+const newName = ref(props.name);
+const newSurn = ref(props.surn);
+
+const edit = () => {
+  isEdit.value = true;
+};
+
+const save = () => {
+  isEdit.value = false;
+  emit('change', props.id, newName.value, newSurn.value);
+};
 </script>
 
 <style scoped>
@@ -34,7 +54,8 @@ defineEmits(['remove']);
   color: rgb(250, 62, 156); /* Розовый цвет текста */
 }
 
-.remove-button {
+.edit-button,
+.save-button {
   background-color: rgb(250, 62, 156); /* Розовая кнопка */
   color: white; /* Белый цвет текста */
   border: none; /* Без границ */
@@ -43,7 +64,15 @@ defineEmits(['remove']);
   cursor: pointer; /* Курсор в виде указателя */
 }
 
-.remove-button:hover {
+.edit-button:hover,
+.save-button:hover {
   background-color: rgba(250, 62, 156, 0.8); /* Темнее при наведении */
+}
+
+.input-field {
+  margin-right: 10px; /* Отступ между инпутами и кнопкой */
+  padding: 5px; /* Внутренние отступы */
+  border: 1px solid rgb(250, 62, 156); /* Розовая рамка инпутов */
+  border-radius: 5px; /* Скругленные углы */
 }
 </style>

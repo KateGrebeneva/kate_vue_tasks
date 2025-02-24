@@ -10,8 +10,14 @@ const users = ref([
   { id: 3, name: 'Regina', surn: 'Mills' },
 ]);
 
-const remove = (id) => {
-  users.value = users.value.filter(user => user.id !== id);
+const change = (id, name, surn) => {
+  users.value = users.value.map(user => {
+    if (user.id === id) {
+      user.name = name;
+      user.surn = surn;
+    }
+    return user;
+  });
 };
 </script>
 
@@ -27,7 +33,7 @@ const remove = (id) => {
           :id="user.id"
           :name="user.name"
           :surn="user.surn"
-          @remove="remove"
+          @change="change"
         />
      </div>
     </div>
