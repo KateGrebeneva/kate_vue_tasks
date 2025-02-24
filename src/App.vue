@@ -1,14 +1,16 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
-import { ref } from 'vue'
+import { ref } from 'vue';
+import UserForm from './components/UserForm.vue';
 import Employee from './components/Employee.vue';
 
-const users = ref([
-  { id: 1, name: 'Piter', surn: 'Pen' },
-  { id: 2, name: 'Cora', surn: 'Mills' },
-  { id: 3, name: 'Regina', surn: 'Mills' },
-]);
+const users = ref([]);
+
+const add = (name, surn) => {
+  let id = users.value.length + 1;
+  users.value.push({ id, name, surn });
+};
 
 const change = (id, name, surn) => {
   users.value = users.value.map(user => {
@@ -25,18 +27,20 @@ const change = (id, name, surn) => {
   <header>
   <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
   <div class="container">
-      <h1 class="title">Список пользователей</h1>
-      <div class="user-list">
-        <Employee
-          v-for="user in users"
-          :key="user.id"
-          :id="user.id"
-          :name="user.name"
-          :surn="user.surn"
-          @change="change"
-        />
-     </div>
+    <h1 class="title">Добавить пользователя</h1>
+    <UserForm @add="add" />
+    <h2 class="subtitle">Список пользователей</h2>
+    <div class="user-list">
+      <Employee
+        v-for="user in users"
+        :key="user.id"
+        :id="user.id"
+        :name="user.name"
+        :surn="user.surn"
+        @change="change"
+      />
     </div>
+  </div>
   </header>
 
   <main>
@@ -47,7 +51,7 @@ const change = (id, name, surn) => {
 <style scoped>
 .container {
   padding: 20px;
-  background-color:rgb(255, 208, 235); /* Светлый фон */
+  background-color:rgb(250, 189, 223); /* Светлый фон */
   border-radius: 10px; /* Скругленные углы */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень */
 }
