@@ -9,7 +9,6 @@
 <script setup>
 import { defineProps } from 'vue'
 
-// Определяем типы пропсов
 const props = defineProps({
   name: {
     type: String,
@@ -28,22 +27,27 @@ const props = defineProps({
 
 <style scoped>
 .employee-card {
-  background-color:rgb(248, 193, 219); /* Светло-розовый фон для карточки работника */
-  border: 2px solid rgb(213, 27, 120); /* Розовая граница */
+  background-color:rgb(255, 207, 230); /* Светло-розовый фон для карточки работника */
+  border: 2px solid rgb(199, 12, 105); /* Розовая граница */
   border-radius: 10px;
   padding: 15px;
   margin-bottom: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для карточки */
+  transition: transform 0.3s; /* Плавный переход при наведении */
+}
+
+.employee-card:hover {
+  transform: scale(1.05);
 }
 
 .employee-name {
-  color:rgb(164, 0, 85); /* Темно-розовый цвет имени */
-  font-size: 1.5rem; /* Увеличенный размер шрифта для имени */
+  color: #d5006d; 
+  font-size: 1.5rem; 
 }
 
 .employee-info {
-  color: #333; /* Цвет текста для информации */
-  font-size: 1rem; /* Размер шрифта для информации */
-  color:rgb(188, 0, 97);
+  color: #333; 
+  font-size: 1rem; 
+  color: #d5006d;
 }
 </style>
