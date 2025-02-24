@@ -1,53 +1,48 @@
 <template>
-  <div class="employee-card">
-    <h2 class="employee-name">{{ name }}</h2>
-    <p class="employee-info">Зарплата: {{ salary }}$</p>
-    <p class="employee-info">Возраст: {{ age }} лет</p>
+  <div class="employee-container">
+    <h2 class="employee-title">Работник</h2>
+    <button class="send-button" @click="handleSendInfo">Отправить информацию о работнике</button>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
+import { defineEmits } from 'vue'
 
-const props = defineProps({
-  name: {
-    type: String,
-    required: true
-  },
-  salary: {
-    type: Number,
-    required: true
-  },
-  age: {
-    type: Number,
-    required: true
-  }
-})
+const emit = defineEmits(['send-info'])
+
+const handleSendInfo = () => {
+  const employeeName = 'David'; // Имя работника
+  const employeeSalary = '50000'; // Зарплата работника
+  emit('send-info', employeeName, employeeSalary);
+}
 </script>
 
 <style scoped>
-.employee-card {
-  background-color:rgb(255, 207, 230); /* Светло-розовый фон для карточки работника */
-  border: 2px solid rgb(199, 12, 105); /* Розовая граница */
+.employee-container {
+  background-color:rgb(255, 205, 225); /* Светлый фон для дочернего компонента */
   border-radius: 10px;
   padding: 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для карточки */
-  transition: transform 0.3s; /* Плавный переход при наведении */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень */
 }
 
-.employee-card:hover {
-  transform: scale(1.05);
+.employee-title {
+  color:rgb(182, 2, 95); /* Темно-розовый цвет заголовка */
+  text-align: center;
 }
 
-.employee-name {
-  color: #d5006d; 
-  font-size: 1.5rem; 
+.send-button {
+  background-color:rgb(235, 36, 135); /* Розовая кнопка */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Плавный переход цвета фона и эффекта нажатия */
 }
 
-.employee-info {
-  color: #333; 
-  font-size: 1rem; 
-  color: #d5006d;
+.send-button:hover {
+  background-color:rgb(171, 5, 91); /* Темно-розовый при наведении */
+  transform: scale(1.05); /* Увеличение кнопки при наведении */
 }
 </style>

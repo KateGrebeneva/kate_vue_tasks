@@ -2,22 +2,17 @@
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import Tasks from './components/Tasks.vue'
+import Employee from './components/Employee.vue'
 
-const playAnimation = () => {
-  alert('Воспроизведение анимации!');
-}
-
-const playCartoon = () => {
-  alert('Воспроизведение мультика!');
+const func = (name, salary) => {
+  console.log('Name: ' + name,'Salary: ' +  salary);
 }
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-    <p>
-     <Tasks @show-animation="playAnimation" @show-cartoon="playCartoon" />
-    </p>
+    <Employee @send-info="func" />
   </header>
 
   <main>
