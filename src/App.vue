@@ -9,7 +9,7 @@ import Employee from './components/Employee.vue'
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
     <p>
-      <Employee name="Alice" surn="Johnson" age="25" />
+      <Employee :arg="['Alice', 'Bob', 'Charlie']" />
     </p>
   </header>
 
