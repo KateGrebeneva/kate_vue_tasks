@@ -3,13 +3,19 @@ import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import Tasks from './components/Tasks.vue'
 import Employee from './components/Employee.vue'
+import { ref } from 'vue'
+
+// Определяем реактивные переменные
+const name = ref('John')
+const salary = ref(50000)
+const age = ref(30)
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
     <p>
-      <Employee :arg="['Alice', 'Bob', 'Charlie']" />
+      <Employee :name="name" :salary="salary" :age="age" />
     </p>
   </header>
 
