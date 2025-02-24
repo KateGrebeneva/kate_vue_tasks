@@ -2,20 +2,35 @@
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import { ref } from 'vue'
-import Tasks from './components/Tasks.vue'
+import Employee from './components/Employee.vue';
 
-const message = ref('');
+const users = ref([
+  { id: 1, name: 'Piter', surn: 'Pen' },
+  { id: 2, name: 'Cora', surn: 'Mills' },
+  { id: 3, name: 'Regina', surn: 'Mills' },
+]);
 
-const handleShow = (param1, param2) => {
-  message.value = param1 + " " + param2; // Сохраняем сообщение из события
-}
+const remove = (id) => {
+  users.value = users.value.filter(user => user.id !== id);
+};
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-    <Tasks @show="handleShow" />
-    <div v-if="message" class="message-box">{{ message }}</div>
+  <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="container">
+      <h1 class="title">Список пользователей</h1>
+      <div class="user-list">
+        <Employee
+          v-for="user in users"
+          :key="user.id"
+          :id="user.id"
+          :name="user.name"
+          :surn="user.surn"
+          @remove="remove"
+        />
+     </div>
+    </div>
   </header>
 
   <main>
@@ -24,6 +39,21 @@ const handleShow = (param1, param2) => {
 </template>
 
 <style scoped>
+.container {
+  padding: 20px;
+  background-color:rgb(255, 208, 235); /* Светлый фон */
+  border-radius: 10px; /* Скругленные углы */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+.title {
+  color: rgb(250, 62, 156); /* Розовый цвет заголовка */
+  text-align: center;
+}
+
+.user-list {
+  margin-top: 20px;
+}
 header {
   line-height: 1.5;
 }

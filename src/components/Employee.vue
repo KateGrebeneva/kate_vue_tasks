@@ -1,48 +1,49 @@
 <template>
-  <div class="employee-container">
-    <h2 class="employee-title">Работник</h2>
-    <button class="send-button" @click="handleSendInfo">Отправить информацию о работнике</button>
+  <div class="employee-card">
+    <span class="employee-name">{{ name }} {{ surn }}</span>
+    <button class="remove-button" @click="$emit('remove', id)">
+      Удалить
+    </button>
   </div>
 </template>
 
 <script setup>
-import { defineEmits } from 'vue'
+defineProps({
+  id: Number,
+  name: String,
+  surn: String,
+});
 
-const emit = defineEmits(['send-info'])
-
-const handleSendInfo = () => {
-  const employeeName = 'David'; // Имя работника
-  const employeeSalary = '50000'; // Зарплата работника
-  emit('send-info', employeeName, employeeSalary);
-}
+defineEmits(['remove']);
 </script>
 
 <style scoped>
-.employee-container {
-  background-color:rgb(255, 205, 225); /* Светлый фон для дочернего компонента */
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень */
+.employee-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff; /* Белый фон карточки */
+  border: 2px solid rgb(250, 62, 156); /* Розовая рамка */
+  border-radius: 8px; /* Скругленные углы */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
 }
 
-.employee-title {
-  color:rgb(182, 2, 95); /* Темно-розовый цвет заголовка */
-  text-align: center;
+.employee-name {
+  color: rgb(250, 62, 156); /* Розовый цвет текста */
 }
 
-.send-button {
-  background-color:rgb(235, 36, 135); /* Розовая кнопка */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s; /* Плавный переход цвета фона и эффекта нажатия */
+.remove-button {
+  background-color: rgb(250, 62, 156); /* Розовая кнопка */
+  color: white; /* Белый цвет текста */
+  border: none; /* Без границ */
+  border-radius: 5px; /* Скругленные углы */
+  padding: 5px 10px; /* Внутренние отступы */
+  cursor: pointer; /* Курсор в виде указателя */
 }
 
-.send-button:hover {
-  background-color:rgb(171, 5, 91); /* Темно-розовый при наведении */
-  transform: scale(1.05); /* Увеличение кнопки при наведении */
+.remove-button:hover {
+  background-color: rgba(250, 62, 156, 0.8); /* Темнее при наведении */
 }
 </style>
